@@ -33,13 +33,17 @@ let createHornedAnimals = () => {
     data.forEach (animalObj => {
       new HornedAnimal(animalObj);
 
-      $select.append(`<option>${animalObj.keyword}</option>`);
+      generateDropdown(animalObj);
     }) 
   }).then(renderAllHorndedAnimals);
 }
 
 function renderAllHorndedAnimals () {
   allHornedAnimals.forEach(animal => animal.render());
+}
+
+let generateDropdown = (object) => {
+  $select.append(`<option value= ${object.keyword}>${object.keyword}</option>`);
 }
 
 createHornedAnimals();
