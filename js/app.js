@@ -1,4 +1,5 @@
 'use strict';
+const $select = $('select');
 
 function HornedAnimal(hornedAnimal) {
   this.url = hornedAnimal.image_url;
@@ -31,6 +32,8 @@ let createHornedAnimals = () => {
   $.getJSON('./data/page-1.json', data => {
     data.forEach (animalObj => {
       new HornedAnimal(animalObj);
+
+      $select.append(`<option>${animalObj.keyword}</option>`);
     }) 
   }).then(renderAllHorndedAnimals);
 }
@@ -40,11 +43,3 @@ function renderAllHorndedAnimals () {
 }
 
 createHornedAnimals();
-
-
-
-  //use jQuery to make a copy of the template that we need fron HTML
-    //copy template
-    //fill in template with properties
-    //append to DOM with properties
-
