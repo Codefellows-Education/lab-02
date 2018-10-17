@@ -13,15 +13,32 @@ function HornedAnimal(hornedAnimal) {
 const allHornedAnimals = [];
 
 HornedAnimal.prototype.render = function () {
+  $('main').append('<div class="clone"></div>');
+  let $hornedAnimalContainer = $('div[class="clone"]');
+  let $clonedHornedAnimal = $('#photo-template').html();
+
+  $hornedAnimalContainer.html($clonedHornedAnimal);
+  $hornedAnimalContainer.find('h2').text(this.name);
+  $hornedAnimalContainer.find('img').attr('src', this.url);
+  $hornedAnimalContainer.find('img').attr('alt', this.keyword);
+  $hornedAnimalContainer.find('img').attr('data-horns', this.horns);
+  $hornedAnimalContainer.find('p').text(this.description);
   
+  $hornedAnimalContainer.attr('class', '');
 }
 
-let createHornedAnimals = () => $.getJSON('./data/page-1.json', data => data.forEach (animalObj => new HornedAnimal(animalObj))
-  );
-  console.log(allHornedAnimals);
-
+let createHornedAnimals = () => {
+  $.getJSON('./data/page-1.json', data => {
+    data.forEach (animalObj => {
+      new HornedAnimal(animalObj);
+    }) 
+  })
+}
 
 createHornedAnimals();
+
+
+
   //use jQuery to make a copy of the template that we need fron HTML
     //copy template
     //fill in template with properties
