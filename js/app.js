@@ -1,4 +1,6 @@
 'use strict';
+const $select = $('select');
+const keywordArr = [];
 
 function HornedAnimal(hornedAnimal) {
   this.url = hornedAnimal.image_url;
@@ -31,6 +33,8 @@ let createHornedAnimals = () => {
   $.getJSON('./data/page-1.json', data => {
     data.forEach (animalObj => {
       new HornedAnimal(animalObj);
+
+      generateDropdown(animalObj);
     }) 
   }).then(renderAllHorndedAnimals);
 }
@@ -39,12 +43,21 @@ function renderAllHorndedAnimals () {
   allHornedAnimals.forEach(animal => animal.render());
 }
 
+let generateDropdown = (object) => 
+{
+  if (!keywordArr.includes(object.keyword)) 
+  {
+    $select.append(`<option value= ${object.keyword}>${object.keyword}</option>`);
+    keywordArr.push(object.keyword);
+  }
+  console.log(keywordArr);
+}
+
+$( "select" ).change(function() {
+  let keyword = $('select option:selected').text();
+  $(`img:not([alt=${keyword}]`).parent('div').hide();
+});
+
+
+
 createHornedAnimals();
-
-
-
-  //use jQuery to make a copy of the template that we need fron HTML
-    //copy template
-    //fill in template with properties
-    //append to DOM with properties
-
