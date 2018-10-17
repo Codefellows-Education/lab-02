@@ -32,7 +32,11 @@ let createHornedAnimals = () => {
     data.forEach (animalObj => {
       new HornedAnimal(animalObj);
     }) 
-  })
+  }).then(renderAllHorndedAnimals);
+}
+
+function renderAllHorndedAnimals () {
+  allHornedAnimals.forEach(animal => animal.render());
 }
 
 createHornedAnimals();
