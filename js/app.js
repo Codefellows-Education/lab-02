@@ -54,7 +54,10 @@ let generateDropdown = (object) =>
 }
 
 $( "select" ).change(function() {
-  alert( "Handler for .select() called." );
-})
+  let keyword = $('select option:selected').text();
+  $(`img:not([alt=${keyword}]`).parent('div').hide();
+});
+
+
 
 createHornedAnimals();
