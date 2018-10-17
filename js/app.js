@@ -1,5 +1,6 @@
 'use strict';
 const $select = $('select');
+const keywordArr = [];
 
 function HornedAnimal(hornedAnimal) {
   this.url = hornedAnimal.image_url;
@@ -42,8 +43,23 @@ function renderAllHorndedAnimals () {
   allHornedAnimals.forEach(animal => animal.render());
 }
 
-let generateDropdown = (object) => {
-  $select.append(`<option value= ${object.keyword}>${object.keyword}</option>`);
+let generateDropdown = (object) => 
+{
+  if (!keywordArr.includes(object.keyword)) 
+  {
+    $select.append(`<option value= ${object.keyword}>${object.keyword}</option>`);
+    keywordArr.push(object.keyword);
+  }
+  console.log(keywordArr);
+  // if (keywordArr)
+  // allHornedAnimals.forEach(animal => {
+
+  //   if (object.keyword !== object.keyword)
+  //   {
+  //     $select.append(`<option value= ${object.keyword}>${object.keyword}</option>`);
+  //   }
+
+  // })
 }
 
 createHornedAnimals();
