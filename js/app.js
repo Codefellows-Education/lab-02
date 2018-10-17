@@ -51,15 +51,10 @@ let generateDropdown = (object) =>
     keywordArr.push(object.keyword);
   }
   console.log(keywordArr);
-  // if (keywordArr)
-  // allHornedAnimals.forEach(animal => {
-
-  //   if (object.keyword !== object.keyword)
-  //   {
-  //     $select.append(`<option value= ${object.keyword}>${object.keyword}</option>`);
-  //   }
-
-  // })
 }
+
+$( "select" ).change(function() {
+  alert( "Handler for .select() called." );
+})
 
 createHornedAnimals();
