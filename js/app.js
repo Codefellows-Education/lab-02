@@ -35,25 +35,23 @@ let createHornedAnimals = () => {
       new HornedAnimal(animalObj);
 
       generateDropdown(animalObj);
-    }) 
+    })
   }).then(renderAllHorndedAnimals);
-}
+};
 
 function renderAllHorndedAnimals () {
   allHornedAnimals.forEach(animal => animal.render());
 }
 
-let generateDropdown = (object) => 
-{
-  if (!keywordArr.includes(object.keyword)) 
-  {
+let generateDropdown = (object) => {
+  if (!keywordArr.includes(object.keyword)){
     $select.append(`<option value= ${object.keyword}>${object.keyword}</option>`);
     keywordArr.push(object.keyword);
   }
   console.log(keywordArr);
-}
+};
 
-$( "select" ).change(function() {
+$( 'select' ).change(function() {
   let keyword = $('select option:selected').text();
   $(`img:not([alt=${keyword}]`).parent('div').hide();
 });
