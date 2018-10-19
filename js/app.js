@@ -54,8 +54,8 @@ let generateDropdown = (object) => {
 $( 'select' ).change(function() {
 
   let keyword = $('select option:selected').text();
-  $(`img:not([alt=${keyword}]`).parent('div').hide();
-  $(`img([alt=${keyword}]`).parent('div').show();
+  $(`img:not([alt=${keyword}])`).parent('div').hide();
+  $(`img[alt=${keyword}]`).parent('div').show();
 });
 
 
